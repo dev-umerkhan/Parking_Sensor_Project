@@ -1,6 +1,8 @@
 package com.example.parking_sensor_project;
 
 import androidx.appcompat.app.AppCompatActivity;
+import android.media.AudioManager;
+import android.media.ToneGenerator;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.TextView;
@@ -16,14 +18,15 @@ public class MainActivity extends AppCompatActivity {
     MqttClient client;
     OnMessageCallback callbackClass;
     TextView radarTextView;
+    ToneGenerator toneGen;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Assuming you have a TextView with this ID in your layout
         radarTextView = findViewById(R.id.radarTextView);
+        toneGen = new ToneGenerator(AudioManager.STREAM_ALARM, 100);
 
         connect();
     }
@@ -71,8 +74,10 @@ public class MainActivity extends AppCompatActivity {
                     radarTextView.setTextColor(Color.parseColor("#10B981")); // Safe Green
                 } else if (distance > 15) {
                     radarTextView.setTextColor(Color.parseColor("#F59E0B")); // Warning Orange
+                    toneGen.startTone(ToneGenerator.TONE_CDMA_PIP, 150);
                 } else {
                     radarTextView.setTextColor(Color.parseColor("#EF4444")); // Danger Red
+                    toneGen.startTone(ToneGenerator.TONE_CDMA_EMERGENCY_RINGBACK, 500);
                 }
             } catch (NumberFormatException e) {
                 // If the sensor sends a weird non-number string, ignore it
