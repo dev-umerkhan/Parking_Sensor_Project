@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void connect() {
         // Our specific HiveMQ settings
-        String subTopic = "phasecrafter528/super_secret_radar_993/distance";
+        String subTopic = "cc3200/ultrasonic";
         String broker = "tcp://broker.hivemq.com:1883";
         String clientId = "AndroidClient_" + System.currentTimeMillis();
         MemoryPersistence persistence = new MemoryPersistence();
