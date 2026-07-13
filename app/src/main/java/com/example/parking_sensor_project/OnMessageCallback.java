@@ -1,5 +1,21 @@
 package com.example.parking_sensor_project;
 
+/*
+ * Project: Automotive Android - Proximity Sensor System
+ * Author: Muhammad Umer Khan
+ * Date: July 2026
+ *
+ * Purpose:
+ * This class implements the MqttCallback interface to handle incoming asynchronous network events. It listens
+ * for incoming MQTT messages from the vehicle's sensor node and passes the payload back to the MainActivity's UI
+ * thread for processing.
+ *
+ * Acknowledgement/Citation:
+ * The basic MQTT callback boilerplate code used in this file were adapted from the lecture slides and course
+ * materials provided by Prof. Dr. rer. nat. Goetz Winterfeldt.
+ */
+
+
 import android.util.Log;
 import org.eclipse.paho.client.mqttv3.IMqttDeliveryToken;
 import org.eclipse.paho.client.mqttv3.MqttCallback;
@@ -15,7 +31,7 @@ public class OnMessageCallback implements MqttCallback {
 
     @Override
     public void connectionLost(Throwable cause) {
-        // After the connection is lost, it usually reconnects here
+        // After the connection is lost, it reconnects here
         Log.d("Debug", "Connection lost!");
     }
 

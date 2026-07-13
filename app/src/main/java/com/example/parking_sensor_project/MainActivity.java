@@ -1,5 +1,21 @@
 package com.example.parking_sensor_project;
 
+/*
+ * Project: Automotive Android - Proximity Sensor System
+ * Author: Muhammad Umer Khan
+ * Date: July 2026
+ *
+ * Purpose:
+ * This application acts as the dashboard for a smart parking radar. It connects to a cloud-based HiveMQ broker
+ * via MQTT to receive real-time distance measurements from a CC3200 microcontroller. It utilizes multi-sensory
+ * feedback, translating the distance into responsive UI color changes and auditory warnings via a ToneGenerator
+ * to minimize driver distraction.
+ *
+ * Acknowledgement/Citation:
+ * The basic MQTT connection architecture and callback boilerplate code used in this file were adapted from the
+ * lecture slides and course materials provided by Prof. Dr. rer. nat. Goetz Winterfeldt.
+ */
+
 import androidx.appcompat.app.AppCompatActivity;
 import android.media.AudioManager;
 import android.media.ToneGenerator;
